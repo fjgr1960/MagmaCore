@@ -9,7 +9,7 @@ use Magma\LiquidOrm\QueryBuilder\Exception\QueryBuilderInvalidArgumentException;
 class QueryBuilder implements QueryBuilderInterface
 {
   /** properties */
-  protected const QUERY_TYPES = ['insert', 'select', 'update', 'delete', 'raw'];
+  protected const QUERY_TYPES = ['insert', 'select', 'update', 'delete', 'search', 'raw'];
   protected const SQL_DEFAULT = [
     'conditions' => [],
     'selectors' => [],
@@ -38,13 +38,13 @@ class QueryBuilder implements QueryBuilderInterface
   {}
 
   /**
-   * queryBuilder function
+   * buildQuery function
    *
    * @param array $args
    * @return self
    * @throws QueryBuilderInvalidArgumentException
    */
-  public function queryBuilder(array $args = []): self
+  public function buildQuery(array $args = []): self
   {
     if (count($args) < 0) {
       throw new QueryBuilderInvalidArgumentException();
@@ -133,6 +133,12 @@ class QueryBuilder implements QueryBuilderInterface
       return $this->sqlQuery;
     }
     return false;
+  }
+
+  /** @inheritDoc */
+  public function searchQuery(): string
+  {
+    return '';
   }
 
   /** @inheritDoc */

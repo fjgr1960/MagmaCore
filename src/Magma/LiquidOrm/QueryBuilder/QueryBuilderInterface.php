@@ -35,6 +35,13 @@ interface QueryBuilderInterface
   public function deleteQuery(): string;
 
   /**
+   * searchQuery function
+   *
+   * @return string
+   */
+  public function searchQuery(): string;
+
+  /**
    * rawQuery function
    *
    * @return string
