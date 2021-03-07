@@ -30,7 +30,7 @@ class QueryBuilderFactory
       throw new QueryBuilderException("
         $queryBuilderString is not a valid QueryBuilder object!
       ");
-    return new QueryBuilder();
+    return $queryBuilderObject
   }
 
 }
