@@ -28,14 +28,14 @@ class EntityManagerFactory
    *
    * @param string $crudString
    * @param string $tableSchema
-   * @param string $tableSchemaId
+   * @param string $tableSchemaID
    * @param array $options
    * @return EntityManager
    * @throws CrudException
    */
-  public function create(string $crudString, string $tableSchema, string $tableSchemaId, array $options = []): EntityManager
+  public function create(string $crudString, string $tableSchema, string $tableSchemaID, array $options = []): EntityManager
   {
-    $crudObject = new $crudString();
+    $crudObject = new $crudString($this->dataMapper, $this->queryBuilder, $tableSchema, $tableSchemaID, $options);
     if (!$crudObject instanceof Crud)
       throw new CrudException("
         $crudString is not a valid Crud object!

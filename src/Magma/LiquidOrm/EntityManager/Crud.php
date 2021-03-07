@@ -17,13 +17,15 @@ class Crud implements CrudInterface
    * @param QueryBuilder $queryBuilder
    * @param string $tableSchema
    * @param string $tableSchemaID
+   * @param array $options
    * @return void
    */
   public function __construct(
     protected DataMapper $dataMapper,
     protected QueryBuilder $queryBuilder,
     protected string $tableSchema,
-    protected string $tableSchemaID
+    protected string $tableSchemaID,
+    protected ?array $options = []
   )
   {}
 
