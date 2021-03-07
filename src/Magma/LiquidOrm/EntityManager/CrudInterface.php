@@ -83,7 +83,8 @@ interface CrudInterface
    * @param string $rawQuery
    * @param array $conditions
    * @return mixed
+   * @throws Throwable
    */
-  public function rawQuery(string $rawQuery, array $conditions): mixed;
+  public function rawQuery(string $rawQuery, ?array $conditions): mixed;
 
 }

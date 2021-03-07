@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Magma\LiquidOrm\EntityManager;
 
+use Throwable;
 use Magma\LiquidOrm\DataMapper\DataMapper;
 use Magma\LiquidOrm\QueryBuilder\QueryBuilder;
-use Throwable;
 
 class Crud implements CrudInterface
 {
@@ -151,7 +151,24 @@ class Crud implements CrudInterface
   }
 
   /** @inheritDoc */
-  public function rawQuery(string $rawQuery, array $conditions): mixed
-  {}
+  public function rawQuery(string $rawQuery, ?array $conditions = []): mixed
+  {
+    try {
+      $args = [
+        'table' => $this->getSchema(),
+        'type' => 'raw',
+        'raw' => $rawQuery,
+        'conditions' => $conditions,
+      ];
+      $query = $this->queryBuilder->buildQuery($args)->rawQuery();
+      $this->dataMapper->persist($query, $this->dataMapper->buildQueryParameters($conditions));
+      if ($this->dataMapper->numRows()) {
+        return $this->dataMapper->results();
+      }
+    }
+    catch (Throwable $th) {
+      throw $th;
+    }
+  }
 
 }
