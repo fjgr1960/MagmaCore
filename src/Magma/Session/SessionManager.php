@@ -13,7 +13,7 @@ class SessionManager
    *
    * @return Session
    */
-  public function initialize(): Session
+  public static function initialize(): Session
   {
     $factory = new SessionFactory();
     return $factory->create('', NativeSessionStorage::class);
