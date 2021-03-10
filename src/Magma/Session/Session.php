@@ -112,7 +112,7 @@ class Session implements SessionInterface
   }
 
   /** @inheritDoc */
-  public function flush(string $key, mixed $value): void
+  public function flush(string $key, mixed $value = null): void
   {
     $this->ensureSessionKeyIsValid($key);
     try {

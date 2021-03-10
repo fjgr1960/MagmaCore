@@ -29,6 +29,11 @@ class BaseModel
     $this->repository = $factory->create(DataRepository::class);
   }
 
+  /**
+   * getRepository function
+   *
+   * @return DataRepository
+   */
   public function getRepository(): DataRepository
   {
     return $this->repository;

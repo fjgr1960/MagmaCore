@@ -27,21 +27,22 @@ class DataMapperEnvironmentConfiguration
    */
   public function getDatabaseCredentials(string $driver): array
   {
-    $connectionString = [];
+    $connectionArray = [];
+    $this->isCredentialsValid($driver);
     foreach ($this->credentials as $credential)
       if (array_key_exists($driver, $credential))
-        $connectionString = $credential[$driver];
-    return $connectionString;
+        $connectionArray = $credential[$driver];
+    return $connectionArray;
   }
 
   /**
-   * isValid function
+   * isCredentialsValid function
    *
    * @param string $driver
    * @return void
    * @throws DataMapperInvalidArgumentException
    */
-  private function isValid(string $driver): void
+  private function isCredentialsValid(string $driver): void
   {
     if (empty($driver) || !in_array($driver, array_keys($this->credentials[$driver])))
       throw new DataMapperInvalidArgumentException('Driver is either missing or unsupported!');

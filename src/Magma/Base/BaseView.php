@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Magma\Base;
 
 use Twig\Environment;
+use Magma\Twig\TwigExtension;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
 

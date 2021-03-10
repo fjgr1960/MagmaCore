@@ -19,9 +19,8 @@ class YamlConfig
    */
   private function isFileExists(string $filename): void
   {
-    if (!file_exists($filename)) {
+    if (!file_exists($filename))
       throw new BaseException("$filename does not exist!");
-    }
   }
 
   /**
@@ -37,9 +36,8 @@ class YamlConfig
       $this->isFileExists($file);
       $parts = parse_url($file);
       $path = $parts['path'];
-      if (strpos($path, $yamlFile)) {
-        return Yaml::parseFile($yamlFile);
-      }
+      if (strpos($path, $yamlFile))
+        return Yaml::parseFile($file);
     }
   }
 

@@ -22,6 +22,14 @@ class BaseController
     $this->twig = new BaseView();
   }
 
+  /**
+   * render function
+   *
+   * @param string $template
+   * @param array $context
+   * @return string
+   * @throws BaseLogicException
+   */
   public function render(string $template, array $context = []): string
   {
     if ($this->twig === null)
