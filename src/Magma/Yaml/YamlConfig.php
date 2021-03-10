@@ -29,6 +29,7 @@ class YamlConfig
    *
    * @param string $yamlFile
    * @return mixed
+   * @throws ParseException
    */
   public function getYaml(string $yamlFile): mixed
   {
@@ -47,6 +48,7 @@ class YamlConfig
    *
    * @param string $yamlFile
    * @return mixed
+   * @throws ParseException
    */
   public static function file(string $yamlFile): mixed
   {

@@ -9,13 +9,29 @@ use Magma\Base\BaseView;
 
 class ErrorHandling
 {
-  public static function errorHandler($severity, $message, $file, $line)
+  /**
+   * errorHandler function
+   *
+   * @param integer $severity
+   * @param string $message
+   * @param string $file
+   * @param integer $line
+   * @return void
+   * @throws ErrorException
+   */
+  public static function errorHandler(int $severity, string $message, string $file, int $line): void
   {
     if (!(error_reporting() && $severity)) return;
     throw new ErrorException($message, 0, $file, $line);
   }
 
-  public static function exceptionHandler($exception)
+  /**
+   * exceptionHandler function
+   *
+   * @param ErrorException $exception
+   * @return void
+   */
+  public static function exceptionHandler(ErrorException $exception): void
   {
     $code = $exception->getCode();
     if ($code !== 404) $code = 500;
